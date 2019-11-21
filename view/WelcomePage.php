@@ -20,13 +20,16 @@ require_once('partials/header.php');
                 </form
             </div>
             <div class="text-center mt-3">
-                <h6 style="font-style: italic;">
+                <h6 style="font-style: italic;" class="mb-5">
                     * This script updates the details in the database if any changes are made to the details of the
                     property
                     in the API. Internal entries which are in the same table will not be affected by this update
                     process.
                 </h6>
 
+                <h3>
+                    You have to create a database, then put db credentials into "src/Settings.php"
+                </h3>
             </div>
 
         </div>
