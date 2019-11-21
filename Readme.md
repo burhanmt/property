@@ -28,7 +28,7 @@ The source code of the test project is in GitHub repository:
 
 ## Code Standards
 It is very important for me, therefore I strictly followed  [PSR-1](https://www.php-fig.org/psr/psr-1/) code standard 
-and [PSR-4](https://www.php-fig.org/psr/psr-4/) standard for the PHP. 
+and [PSR-4](https://www.php-fig.org/psr/psr-4/) autoloading standard for the PHP. 
 
 For example:
 (PSR-4) autoloading classes from file paths.
@@ -221,7 +221,7 @@ It means no need to define  "PROPERTY_TABLE_COLUMNS2" constant. Anyway, I didn't
 - to create a db and fill in the credentials constants which are in src/Settings.php file.
 
 ## Conclusion
-In a nutshell, I developed  readable, expandable test project. I am not so  satisfied of the codes which I've written, 
+In a nutshell, I developed  readable, expandable test project. I am not so satisfied of the codes which I've written, 
 so quality code requires to spend more time and think.
 
 
