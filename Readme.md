@@ -66,7 +66,7 @@ If you look at the code that is above, It returns an object like: `return this;`
 Other methods also return the object in "MySqlCredentialBuilder.php" class.
 So When I use it, it looks like a chain, like that:
 
-controller/WindTurbinePageController.php
+
 ```
  *                $credentials=  (new MySqlCredentialBuilder())->setHost('127.0.0.1')
  *                                                             ->setDbName('sample_db_name')
