@@ -47,7 +47,7 @@ class MySql
 
 ## Architecture and Design Patterns
 I used simple MVC architecture model.  I created my own MVC system. I didn't use any PHP Framework and I used less 3rd party component.  I  used some  "Design Patterns" as much as possible.
-Such as Factory, Builder and Method Chaining (also known as Fluent Interface) patterns. And also I strictly followed  -S- Single Responsibility Principle of "**S**OLID".
+Such as Factory, Builder and Method Chaining (also known as Fluent Interface) and Strategy Design Patterns. And also I strictly followed  -S- Single Responsibility Principle of "**S**OLID".
 
 Example-1:
 src/Database/MySqlCredentialBuilder.php
@@ -96,9 +96,22 @@ Look at the code below how to create a class with "FactoryData":
                                  ->getJsonDataFromExternalSource()
                                  ->showData();
 ```
-"PropertiesData::class" is a external source component. It is sealed. You can not inherit or change the properties of 
-this class. You can create it via DataFactory. It makes our code more readable and more expandable.
+"PropertiesData::class" is an external source component. It is sealed. You can not inherit or change the properties of 
+this class. If you want to get data from  another external source, create another component following the common
+interface of the "ObtainDataInterface.php" file. Like that:
 
+
+So you will not have any incompatible interfaces among the "External Data Source" components. After building your
+external data, you can create it via DataFactory. My technique which is used in DataFactory is also  "Strategy
+Design Pattern". Because you can take a group of algorithms(like "PropertiesData::class" ) and makes them
+interchangeable from common interface at runtime. We can do it. Look at below:
+
+
+```
+      $properties = DataFactory::obtainData(PropertiesData::class)
+                                 ->getJsonDataFromExternalSource()
+                                 ->showData();
+```
 
 ## File Structure
 I mentioned above regarding MVC architectural pattern.
