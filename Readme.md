@@ -22,7 +22,7 @@ There are constants. Just fill up them. Like that:
 
 The source code of the test project is in GitHub repository:
 
-[https://github.com/burhanmt/turbine_inspection](https://github.com/burhanmt/turbine_inspection)
+[https://github.com/burhanmt/property.git](https://github.com/burhanmt/property.git)
 
 ## Architecture and Design Patterns
 I used simple MVC architectural design pattern.  I created my own MVC system. I didn't use any PHP Framework and I used less 3rd party component. I preferred to used Vanilla PHP.
