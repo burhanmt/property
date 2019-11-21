@@ -100,6 +100,22 @@ Look at the code below how to create a class with "FactoryData":
 this class. If you want to get data from  another external source, create another component following the common
 interface of the "ObtainDataInterface.php" file. Like that:
 
+src/Database/ObtainDataInterface.php
+```
+<?php
+
+namespace ExternalData;
+
+interface ObtainDataInterface
+{
+    public function getJsonDataFromExternalSource(): PropertiesData;
+
+    public function saveDataToDatabase($db_driver): PropertiesData;
+
+    public function showData(): array;
+
+}
+```
 
 So you will not have any incompatible interfaces among the "External Data Source" components. After building your
 external data, you can create it via DataFactory. My technique which is used in DataFactory is also  "Strategy
@@ -108,7 +124,7 @@ interchangeable from common interface at runtime. We can do it. Look at below:
 
 
 ```
-      $properties = DataFactory::obtainData(PropertiesData::class)
+      $properties = DataFactory::obtainData(**PropertiesData::class**)
                                  ->getJsonDataFromExternalSource()
                                  ->showData();
 ```
