@@ -16,6 +16,8 @@ There are constants. Just fill up them. Like that:
     CONST USERNAME = 'xxx';
     CONST PASSWORD = 'xxx';
 ```
+3. `index.php` is the main file of the app which is in root directory.
+
 
 
 ## Github Links of the Test Project:
@@ -24,10 +26,28 @@ The source code of the test project is in GitHub repository:
 
 [https://github.com/burhanmt/property.git](https://github.com/burhanmt/property.git)
 
+## Code Standards
+It is very important for me, therefore I strictly followed  [PSR-1](https://www.php-fig.org/psr/psr-1/) code standard 
+and (PSR-4) standard for the PHP. 
+
+For example:
+(PSR-4) autoloading classes from file paths.
+Folder name: Database, file name: MySql.php, so MySql class:
+
+```
+namespace Database;
+
+use PDO;
+use PDOException;
+
+class MySql
+{
+
+```
+
 ## Architecture and Design Patterns
-I used simple MVC architectural design pattern.  I created my own MVC system. I didn't use any PHP Framework and I used less 3rd party component. I preferred to used Vanilla PHP.
-But I strictly followed  [PSR-1](https://www.php-fig.org/psr/psr-1/) code standard for the PHP. At the same time, I  used some  "Design Patterns" as much as possible.
-Such as Factory, Builder and Method Chaining (also known as Fluent Interface) patterns.
+I used simple MVC model.  I created my own MVC system. I didn't use any PHP Framework and I used less 3rd party component.  I  used some  "Design Patterns" as much as possible.
+Such as Factory, Builder and Method Chaining (also known as Fluent Interface) patterns. 
 
 Example-1:
 src/Database/MySqlCredentialBuilder.php
@@ -43,7 +63,7 @@ src/Database/MySqlCredentialBuilder.php
 ```
 
 If you look at the code that is above, It returns an object like: `return this;`, allowing the calls to be chained together in a single statement without requiring variables to store the intermediate results.
-Other methods also return the object in "WindTurbine.php" class.
+Other methods also return the object in "MySqlCredentialBuilder.php" class.
 So When I use it, it looks like a chain, like that:
 
 controller/WindTurbinePageController.php
@@ -53,8 +73,15 @@ controller/WindTurbinePageController.php
  *                                                             ->setUsername('burhan')
  *                                                             ->setPassword('2345);
 ```
-We call it "Method chaining" or "Fluent Interface" design pattern.
+Actually this class is the combination of "Builder Design Pattern and Method Chaining",
+ so you can easily inject the credentials in a beautiful way, like that:
 
+```
+
+
+$my_db = new MySql($credentials);
+
+```
 
 
 **Example-2:**
