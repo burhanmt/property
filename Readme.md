@@ -204,7 +204,7 @@ A concrete example of broken DRY principle in my code is in src/ExternalData/Pro
 ```
 
 But I can fix it. Firstly I can make "PROPERTY_TABLE_COLUMNS" an "Array",
-after that I overcome this issue using "implode" like that:
+after that I overcome this issue using "implode" function. Like that:
 
 ```
            $columns1 =  implode(", ", array_keys(self::PROPERTY_TABLE_COLUMNS));
