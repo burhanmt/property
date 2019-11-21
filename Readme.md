@@ -47,7 +47,7 @@ class MySql
 
 ## Architecture and Design Patterns
 I used simple MVC model.  I created my own MVC system. I didn't use any PHP Framework and I used less 3rd party component.  I  used some  "Design Patterns" as much as possible.
-Such as Factory, Builder and Method Chaining (also known as Fluent Interface) patterns. 
+Such as Factory, Builder and Method Chaining (also known as Fluent Interface) patterns. And also I strictly followed  -S- Single Responsibility Principle of "**S**OLID".
 
 Example-1:
 src/Database/MySqlCredentialBuilder.php
@@ -90,14 +90,14 @@ can creates object without use of the constructor. I can create external source 
 in a convenient way. In the future we can have more external source, so this class is the one responsible to
 instantiate them without complexity.
 
-Look at the code below how to instantiate a class with "FactroyData":
+Look at the code below how to create a class with "FactoryData":
 ```
       $properties = DataFactory::obtainData(PropertiesData::class)
                                  ->getJsonDataFromExternalSource()
                                  ->showData();
 ```
 "PropertiesData::class" is a external source component. It is sealed. You can not inherit or change the properties of 
-this class. You can instantiate it via DataFactory. It makes our code more readable and more expandable.
+this class. You can create it via DataFactory. It makes our code more readable and more expandable.
 
 
 ## File Structure
