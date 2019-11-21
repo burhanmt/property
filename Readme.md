@@ -8,7 +8,7 @@ in the API. Internal entries which are in the same table will not be affected by
 ## Installation:
 1. composer update
 2. You have to create a database, then put db credentials into "src/Settings.php"
-There are constants. Just fill up them. Like that:
+There are constants. Just fill them out. Like that:
 
 ```
     CONST HOST     = 'localhost';
