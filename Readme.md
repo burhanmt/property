@@ -16,7 +16,7 @@ There are constants. Just fill them out. Like that:
     CONST USERNAME = 'xxx';
     CONST PASSWORD = 'xxx';
 ```
-3. `index.php` is the main file of the app which is in root directory.
+3. `index.php` is the main file of the app which is in the root directory.
 
 
 
