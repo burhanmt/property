@@ -218,7 +218,7 @@ It means no need to define  "PROPERTY_TABLE_COLUMNS2" constant. Anyway, I didn't
 ## Requirements
 
 - PHP 7.0 and above.
-- to create a db and fill up the credentials constants which are in src/Settings.php file.
+- to create a db and fill in the credentials constants which are in src/Settings.php file.
 
 ## Conclusion
 In a nutshell, I developed  readable, expandable test project. I am not so  satisfied of the codes which I've written to develop it
