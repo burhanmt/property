@@ -239,6 +239,8 @@ But I can fix it. Firstly I can make "PROPERTY_TABLE_COLUMNS" an "Array",
 after that I can overcome this issue using "implode" function. Like that:
 
 ```
+const PROPERTY_TABLE_COLUMNS  = ['uuid','county', 'country', .....
+
            $columns1 =  implode(", ", array_keys(self::PROPERTY_TABLE_COLUMNS));
             
            $columns2 =   ":" . implode(", :", array_keys(self::PROPERTY_TABLE_COLUMNS))
