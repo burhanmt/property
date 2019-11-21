@@ -224,6 +224,7 @@ code standards, design patterns and creating an architecture of the test program
 - The MVC architecture is very primitive. I can make it more useful in the future.
 - There is no image upload and resize of the image feature. I didn't develop it yet due to time pressure.
 - I didn't add PHP Unit test. But I should definitely add it in the future.
+- I should improve error-handling of the app.
 - I didn't write: "I followed strictly DRY(Don't Repeat Yourself)" principle. Because after checking my whole codes I
 realised that I broke this principle in some part of the code.
 
