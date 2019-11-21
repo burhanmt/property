@@ -124,10 +124,12 @@ interchangeable from common interface at runtime. We can do it. Look at below:
 
 
 ```
-      $properties = DataFactory::obtainData(**PropertiesData::class**)
+      $properties = DataFactory::obtainData(PropertiesData::class)
                                  ->getJsonDataFromExternalSource()
                                  ->showData();
 ```
+
+You can inject another external data component instead of `PropertiesData::class` at runtime. Isn't it?
 
 ## File Structure
 I mentioned above regarding MVC architectural pattern.
