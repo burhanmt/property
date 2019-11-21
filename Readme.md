@@ -28,7 +28,7 @@ The source code of the test project is in GitHub repository:
 
 ## Code Standards
 It is very important for me, therefore I strictly followed  [PSR-1](https://www.php-fig.org/psr/psr-1/) code standard 
-and (PSR-4) standard for the PHP. 
+and [PSR-4](https://www.php-fig.org/psr/psr-4/) standard for the PHP. 
 
 For example:
 (PSR-4) autoloading classes from file paths.
