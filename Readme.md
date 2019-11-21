@@ -221,10 +221,8 @@ It means no need to define  "PROPERTY_TABLE_COLUMNS2" constant. Anyway, I didn't
 - to create a db and fill in the credentials constants which are in src/Settings.php file.
 
 ## Conclusion
-In a nutshell, I developed  readable, expandable test project. I am not so  satisfied of the codes which I've written to develop it
-in terms of visual design and architectural design. 
-
-> Quality code requires to spend more time and think.
+In a nutshell, I developed  readable, expandable test project. I am not so  satisfied of the codes which I've written, 
+so quality code requires to spend more time and think.
 
 
 
