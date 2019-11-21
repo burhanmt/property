@@ -161,8 +161,6 @@ require_once('partials/header.php');
                                     echo "<td id='town_{$property['town']}'>{$property['town']}</td>";
                                     echo "<td id='image_full_{$property['image_full']}'>{$property['image_full']}</td>";
                                     echo "<td id='image_thumbnail_{$property['image_thumbnail']}'>{$property['image_thumbnail']}</td>";
-                                    echo "<td id='latitude_{$property['latitude']}'>{$property['latitude']}</td>";
-                                    echo "<td id='longitude_{$property['longitude']}'>{$property['longitude']}</td>";
                                     echo "<td id='num_bedrooms_{$property['num_bedrooms']}'>{$property['num_bedrooms']}</td>";
                                     echo "<td id='num_bathrooms_{$property['num_bathrooms']}'>{$property['num_bathrooms']}</td>";
                                     echo "<td id='price_{$property['price']}'>{$property['price']}</td>";
