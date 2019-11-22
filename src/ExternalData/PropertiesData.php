@@ -68,7 +68,7 @@ final class PropertiesData implements ObtainDataInterface
     }
 
     /*
-     * Dependecy Injection
+     * I used Dependecy Injection. "$db_driver" is an object injection to the method.
      */
     public function saveDataToDatabase($db_driver): PropertiesData
     {
