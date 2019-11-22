@@ -14,7 +14,7 @@ require_once('partials/header.php');
         </div>
         <div class="col-md-12">
             <h1 class="text-center">Welcome Page</h1>
-            <h3 CLASS="text-center">Test Projet - Vanila PHP</h3>
+            <h3 CLASS="text-center">Test Projet</h3>
 
             <div class="row">
                 <div class="col-md-4"></div>
