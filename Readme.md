@@ -185,7 +185,7 @@ if (empty($_SESSION['csrf_token'])) {
 
 And we can easily check the CSRF token with a small function , it is valid or not. Like that:
 
-src/Settings.php
+src/CsrfVerify.php
 ```
     public static function csrfCheck(string $session_token, string $form_token, string $form_name): bool
     {
@@ -208,7 +208,7 @@ src/Settings.php
     }
 ```
 I used different CSRF token for each page, adding  their path like that: "AdminPanel.php". It is twofold security.
-In the test project, Of course  I used one form only but if I use another form for the future development, the logic 
+In the test project, Of course  I used one page only but if I use another page for the future development, the logic 
 is ready to apply for the rests.
 
 ## Design
