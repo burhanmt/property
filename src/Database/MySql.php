@@ -72,6 +72,18 @@ class MySql
         return $statement->execute($data);
     }
 
+    public function getData(string $table_name, string $id): array
+    {
+
+
+        $stmt = $this->conn->prepare('SELECT * FROM ' . $table_name . ' WHERE uuid =:id');
+        $stmt->bindParam(':id', $id);
+
+        $stmt->execute();
+
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
     public function deleteData(string $table_name, string $id): bool
     {
 
@@ -83,6 +95,32 @@ class MySql
         (!$stmt->rowCount()) ? $result = false : $result = true;
 
         return $result;
+    }
+
+    public function updateData(string $table_name, array $columns, array $values, string $id): bool
+    {
+        // initialize an array with values:
+        $params = [];
+
+        // initialize a string with `fieldname` = :placeholder pairs
+        $setStr = "";
+
+        // loop over source data array
+        $i=0;
+        foreach ($columns as $key) {
+            if (isset($values)) {
+                $setStr       .= "`$key` = :$key,";
+                $params[$key] = $values[$i];
+                $i++;
+            }
+
+        }
+        $setStr = rtrim($setStr, ",");
+
+        $params['id'] = $id;
+
+        return $this->conn->prepare("UPDATE $table_name SET $setStr WHERE uuid = :id")
+                          ->execute($params);
     }
 
 }

@@ -67,6 +67,7 @@ require_once('partials/header.php');
                         <small v-if="!$v.price.numeric" class="form-text text-danger">This field must be numeric</small>
                     </div>
 
+
                     <div class="form-group">
                         <label for="propertyType">Property Type</label>
                     </div>
@@ -93,7 +94,7 @@ require_once('partials/header.php');
                 <!-- Modal footer -->
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                    <button type="button" v-model="addButton" class="btn btn-primary" v-bind:disabled="$v.$invalid"
+                    <button type="button" class="btn btn-primary" v-bind:disabled="$v.$invalid"
                             @click="addToDb()">Add
                     </button>
                 </div>
@@ -102,7 +103,75 @@ require_once('partials/header.php');
         </div>
     </div>
 
-    
+
+    <!-- The Modal: Edit  property -->
+    <div class="modal" id="editPropertyModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Edit Property</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+
+                    <div class="form-group">
+                        <label for="countyEdit">County</label>
+                        <input type="text" class="form-control" v-model="countyEdit">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="countryEdit">Country</label>
+                        <input type="text" class="form-control" v-model="countryEdit">
+
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="bedroomsEdit">Number of Bedrooms</label>
+                        <select class="form-control" v-model="bedroomsEdit">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="propertyType">Property Type</label>
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" v-model="propertyTypeEdit" value="sale">
+                        <label class="form-check-label">
+                            Sale
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" v-model="propertyTypeEdit" value="rent">
+                        <label class="form-check-label">
+                            Rent
+                        </label>
+                    </div>
+
+
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                    <input type="hidden" class="form-control" v-model="uuid">
+                    <button type="button" class="btn btn-primary"
+                            @click="updateToDb()">Update
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
 
     <div class="container">
         <div class="row">
@@ -140,6 +209,7 @@ require_once('partials/header.php');
                                     <th scope="col">Source</th>
                                     <th scope="col">Actions</th>
                                     <th scope="col"></th>
+                                    <th scope="col"></th>
 
                                 </tr>
                                 </thead>
@@ -156,17 +226,18 @@ require_once('partials/header.php');
                                     ($property['source'] === 1) ? $source = '<div class="badge badge-primary">API</div>' : $source = '<div class="badge badge-primary">Internal</div>';
                                     echo '<tr id="row_' . $property['uuid'] . '">';
                                     echo "<td>{$i}</td>";
-                                    echo "<td id='county_{$property['county']}'>{$property['county']}</td>";
-                                    echo "<td id='country_{$property['country']}'>{$property['country']}</td>";
-                                    echo "<td id='town_{$property['town']}'>{$property['town']}</td>";
-                                    echo "<td id='image_full_{$property['image_full']}'>{$property['image_full']}</td>";
-                                    echo "<td id='image_thumbnail_{$property['image_thumbnail']}'>{$property['image_thumbnail']}</td>";
-                                    echo "<td id='num_bedrooms_{$property['num_bedrooms']}'>{$property['num_bedrooms']}</td>";
-                                    echo "<td id='num_bathrooms_{$property['num_bathrooms']}'>{$property['num_bathrooms']}</td>";
-                                    echo "<td id='price_{$property['price']}'>{$property['price']}</td>";
-                                    echo "<td id='price_{$property['type']}'>{$property['type']}</td>";
+                                    echo "<td id='county_{$property['uuid']}'>{$property['county']}</td>";
+                                    echo "<td id='country_{$property['uuid']}'>{$property['country']}</td>";
+                                    echo "<td id='town_{$property['uuid']}'>{$property['town']}</td>";
+                                    echo "<td id='image_full_{$property['uuid']}'>{$property['image_full']}</td>";
+                                    echo "<td id='image_thumbnail_{$property['uuid']}'>{$property['image_thumbnail']}</td>";
+                                    echo "<td id='num_bedrooms_{$property['uuid']}'>{$property['num_bedrooms']}</td>";
+                                    echo "<td id='num_bathrooms_{$property['uuid']}'>{$property['num_bathrooms']}</td>";
+                                    echo "<td id='price_{$property['uuid']}'>{$property['price']}</td>";
+                                    echo "<td id='type_{$property['uuid']}'>{$property['type']}</td>";
                                     echo "<td> {$source}</td>";
-                                    echo '<td style="float:left; text-align: left; color:yellow;"><button type="button" @click="deleteRecord(\'' . $property['uuid'] . '\')">Del</button> </td>';
+                                    echo '<td><button type="button" class="btn btn-primary" @click="deleteRecord(\'' . $property['uuid'] . '\')">Del</button> </td>';
+                                    echo '<td><button type="button" class="btn btn-secondary" @click="showEditModal(\'' . $property['uuid'] . '\')">Update</button> </td>';
                                     echo '</tr>';
 
                                 }
@@ -206,12 +277,11 @@ require_once('partials/header.php');
             bathrooms: '1',
             price: '',
             propertyType: 'sale',
-            addButton: 'Add',
-            imageList: [],
-            product : {
-                selectedImage: null
-            }
-
+            uuid: '',
+            countyEdit: '',
+            countryEdit: '',
+            bedroomsEdit: '',
+            propertyTypeEdit: '',
 
         },
         validations: {
@@ -230,25 +300,97 @@ require_once('partials/header.php');
             }
         },
         methods: {
-            onChange(e) {
-                const file = e.target.files[0];
-                this.product.selectedImage = URL.createObjectURL(file);
+
+            resetFields: function () {
+                this.county = '';
+                this.country = '';
+                this.town = '';
+                this.description = '';
+                this.image = '';
+                this.bedrooms = '1';
+                this.bathrooms = '1';
+                this.price = '';
+                this.propertyType = 'sale';
+
+                this.bedroomsEdit = '';
+                this.countyEdit = '';
+                this.countryEdit = '';
+                this.propertyTypeEdit = '';
             },
-            
+
             showAddPropertyModal: function () {
 
+                this.resetFields();
                 $('#addPropertyModal').modal('show');
 
             },
+            updateToDb: function () {
 
-            showImgUploadModal: function () {
+                /*This is mandatory to use in closure, because of the scope of the Jquery AJAX */
+                var vm = app;
 
-                $('#imgUploadModal').modal('show');
+                $.ajax({
+                    type: 'POST',
+                    url: 'index.php?uri=update-property',
+                    data: {
+                        token_: $('#token_').val(),
+                        id: this.uuid,
+                        county: this.countyEdit,
+                        country: this.countryEdit,
+                        num_bedrooms: this.bedroomsEdit,
+                        type: this.propertyTypeEdit
+                    },
+                    dataType: 'json',
+
+                    success: function () {
+
+                        $('#county_' + vm.uuid).text(vm.countyEdit);
+                        $('#country_' + vm.uuid).text(vm.countryEdit);
+                        $('#num_bedrooms_' + vm.uuid).text(vm.bedroomsEdit);
+                        $('#type_' + vm.uuid).text(vm.propertyTypeEdit);
+                    },
+                    error: function (data) {
+                        alert('Error!' + JSON.stringify(data));
+                    }
+                });
+
+                $('#editPropertyModal').modal('hide');
+
+            },
+
+            showEditModal: function (id) {
+
+                this.resetFields();
+
+                /*This is mandatory to use in closure scope of the Jquery AJAX */
+                var vm = app;
+
+                $.ajax({
+                    type: 'GET',
+                    url: 'index.php?uri=get-property',
+                    data: {
+                        id: id
+                    },
+                    dataType: 'json',
+
+                    success: function (data) {
+
+                        vm.bedroomsEdit = data['num_bedrooms'];
+                        vm.countyEdit = data['county'];
+                        vm.countryEdit = data['country'];
+                        vm.propertyTypeEdit = data['type'];
+                        vm.uuid = data['uuid'];
+                    },
+                    error: function (data) {
+                        alert('Error!' + JSON.stringify(data));
+                    }
+                });
+
+                $('#editPropertyModal').modal('show');
 
             },
 
             deleteRecord: function (id) {
-
 
                 $.ajax({
                     type: 'POST',
@@ -294,17 +436,15 @@ require_once('partials/header.php');
 
                     beforeSend: function () {
 
-                        this.addButton = '<i class="fas fa-spinner fa-spin"></i> Adding.';
                     },
                     success: function (data) {
 
-                        this.addButton = 'Add';
+
                         $('#addPropertyModal').modal('hide');
                         window.location = window.location;
 
                     },
                     error: function (data) {
-                        this.addButton = 'Add';
                         alert(JSON.stringify(data));
                     }
                 });

@@ -53,4 +53,15 @@ class AdminController
 
         return $this->my_db->deleteData('properties', $id);
     }
+
+    public function getData(string $id): array
+    {
+
+        return $this->my_db->getData('properties', $id);
+    }
+
+    public function updateData(array $values, string $id): bool
+    {
+        return $this->my_db->updateData('properties', ['county','country','num_bedrooms','type'], $values, $id);
+    }
 }
