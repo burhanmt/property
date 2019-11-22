@@ -12,6 +12,10 @@ use PDOException;
 class MySql
 {
 
+    /**
+     * Database connection instance
+     *
+     */
     private $conn;
 
     // The db connection is established in the private constructor.

@@ -2,11 +2,13 @@
 
 /*
  *
- *      Database credentials and settings are here.
+ *      Database credentials
  */
 
 class Settings
 {
+
+
     CONST HOST     = 'localhost:8889';
     CONST DB_NAME  = 'property';
     CONST USERNAME = 'silverbullet';

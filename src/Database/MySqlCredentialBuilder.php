@@ -31,6 +31,10 @@ use Settings;
 class MySqlCredentialBuilder
 {
 
+    /**
+     * Database credentials
+     *
+     */
     private $host;
     private $db_name;
     private $username;
@@ -39,7 +43,9 @@ class MySqlCredentialBuilder
     public function __construct()
     {
 
-        //I added default credentials but you can change it dynamically.
+        /*
+         * If you don't one of the credential, the class will use default value from "Settings.php"
+         */
         $this->host     = Settings::HOST;
         $this->db_name  = Settings::DB_NAME;
         $this->username = Settings::USERNAME;

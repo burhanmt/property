@@ -25,6 +25,7 @@ class DataFactory
     {
 
         if ($class_name === 'properties') {
+
             return new PropertiesData();
         } else {
 
