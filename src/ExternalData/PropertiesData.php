@@ -8,6 +8,7 @@
  *                                 ->getJsonDataFromExternalSource()
  *                                 ->showData();
  */
+
 namespace ExternalData;
 
 use GuzzleHttp\Client;
@@ -81,10 +82,16 @@ final class PropertiesData implements ObtainDataInterface
 
 
         // prepare sql and bind parameters
+        // This statement is checking the records which recorded to the database. If they are already in client's
+        // database, do not add once again.
         $stmt = $this->db_connection->getConnection()
-                                    ->prepare('INSERT INTO ' . self::TABLE_NAME . ' (' . self::PROPERTY_TABLE_COLUMNS . ') VALUES (' . self::PROPERTY_TABLE_COLUMNS2 . ') ON DUPLICATE KEY UPDATE uuid=:uuid2');
+                                    ->prepare('INSERT INTO ' . self::TABLE_NAME .
+                                        ' (' . self::PROPERTY_TABLE_COLUMNS . ') VALUES (' . self::PROPERTY_TABLE_COLUMNS2 .
+                                        ') ON DUPLICATE KEY UPDATE uuid=:uuid2');
 
 
+        // This foreach code block  updates the details in the database if any changes are made to the details
+        // of the property in the API
         foreach ($properties as $property) {
 
             // mysql search query
