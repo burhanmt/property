@@ -46,6 +46,18 @@ class MySql
 
 ```
 
+My `composer.json` PSR-4 settings:
+
+```
+"autoload": {
+    "classmap": [
+      "src/",
+      "models/",
+      "controller/"
+    ]
+  },
+```
+
 ## Architecture and Design Patterns
 I used simple MVC architecture model.  I created my own MVC system. I didn't use any PHP Framework and I used less 3rd party component.  I  used some  "Design Patterns" as much as possible.
 Such as Factory, Builder and Method Chaining (also known as Fluent Interface) and Strategy Design Patterns. And also I strictly followed  -S- Single Responsibility Principle of "**S**OLID".
