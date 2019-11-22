@@ -1,7 +1,6 @@
 # About The Test Project
 I was given the task of developing a small project that will populate a database with properties via the external API.
-The script has populated the database from the external API source. I did not implement pagination feature due to time pressure 
-of the test project. 
+The script has populated the database from the external API source. 
 
 This script updates the details in the database if any changes are made to the details of the property 
 in the API. Internal entries which are in the same table will not be affected by this update process. 
