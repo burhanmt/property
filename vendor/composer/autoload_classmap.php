@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'AdminController' => $baseDir . '/controller/AdminController.php',
+    'CsrfVerify' => $baseDir . '/src/CsrfVerify.php',
     'Database\\MySql' => $baseDir . '/src/Database/MySql.php',
     'Database\\MySqlCredentialBuilder' => $baseDir . '/src/Database/MySqlCredentialBuilder.php',
     'ExternalData\\DataFactory' => $baseDir . '/src/ExternalData/DataFactory.php',

@@ -305,7 +305,7 @@ require_once('partials/header.php');
                     },
                     error: function (data) {
                         this.addButton = 'Add';
-                        alert('Error!');
+                        alert(JSON.stringify(data));
                     }
                 });
             }

@@ -43,7 +43,7 @@ switch ($default_uri) {
     case 'add-property':   //Admin Controller
         require_once('controller/AdminController.php');
 
-        if (Settings::csrfCheck($_SESSION['csrf_token'], $_POST['data']['token_'], 'AdminPanel.php')) {
+        if (CsrfVerify::csrfCheck($_SESSION['csrf_token'], $_POST['data']['token_'], 'AdminPanel.php')) {
             $adminController = new AdminController();
             if ($adminController->storeJsonData($_POST['data'])) {
                 csrfSuccessMessage();
@@ -60,7 +60,7 @@ switch ($default_uri) {
 
 
 
-        if (Settings::csrfCheck($_SESSION['csrf_token'], $_POST['token_'], 'AdminPanel.php')) {
+        if (CsrfVerify::csrfCheck($_SESSION['csrf_token'], $_POST['token_'], 'AdminPanel.php')) {
             $adminController = new AdminController();
 
             if ($adminController->delete($_POST['id'])) {

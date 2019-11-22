@@ -47,6 +47,7 @@ class ComposerStaticInit90c49eac456ae4d443176ccb1574bffb
 
     public static $classMap = array (
         'AdminController' => __DIR__ . '/../..' . '/controller/AdminController.php',
+        'CsrfVerify' => __DIR__ . '/../..' . '/src/CsrfVerify.php',
         'Database\\MySql' => __DIR__ . '/../..' . '/src/Database/MySql.php',
         'Database\\MySqlCredentialBuilder' => __DIR__ . '/../..' . '/src/Database/MySqlCredentialBuilder.php',
         'ExternalData\\DataFactory' => __DIR__ . '/../..' . '/src/ExternalData/DataFactory.php',
