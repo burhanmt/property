@@ -295,7 +295,7 @@ In the test project, Of course  I used one page only but if I use another page f
 is ready to apply for the rests.
 
 ## Design
-For the design,I didn't spend too much time. I used Vue.js for adding a propery and validation of the form.
+For the design,I didn't spend too much time. I used Vue.js for adding a property and validation of the form.
 The test project design is very simple and primitive. 
 I didn't add image upload feature to the test project. Because of the time limitation. Honestly, I focused on
 code standards, design patterns and creating an architecture of the test program.
