@@ -90,7 +90,10 @@ Actually this class is the combination of "Builder Design Pattern and Method Cha
  so you can easily inject the credentials in a beautiful way, like that:
 
 ```
-
+               $credentials=  (new MySqlCredentialBuilder())->setHost('127.0.0.1')
+                                                             ->setDbName('sample_db_name')
+                                                             ->setUsername('burhan')
+                                                             ->setPassword('2345);
 
 $my_db = new MySql($credentials);
 
