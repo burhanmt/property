@@ -34,6 +34,7 @@ For example:
 (PSR-4) autoloading classes from file paths.
 Folder name: Database, file name: MySql.php, so MySql class:
 
+src/Database/MySql.php
 ```
 namespace Database;
 
