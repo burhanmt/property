@@ -223,6 +223,7 @@ I simplified the folder structure as much as possible like below:
 - view: All page templates of the project is inside this folder.
 - controller: All page controllers of the project is in this folder. 
 - src: Core system components are inside this folder.
+- vendor: Third party components are inside this folder.
 - Routes.php :  All routes are inside this file.
 ```
 It allows me to work Model, View, Controller layer separately, so there is less
