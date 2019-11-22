@@ -11,64 +11,69 @@ Look at the code which is below is doing this task:
 
 src/ExternalData/PropertiesData.php
 ```
-     /*
-     * I used Dependecy Injection. "$db_driver" is an object injection to the method.
-     */
-    public function saveDataToDatabase($db_driver): PropertiesData
-    {
-        $this->db_connection = $db_driver;
-
-        $this->db_connection->createTableWithColumns(self::TABLE_NAME, self::PROPERTY_TABLE_SCHEMA);
-
-
-        $properties = $this->data;
-
-
-        // prepare sql and bind parameters
-        $stmt = $this->db_connection->getConnection()
-                                    ->prepare('INSERT INTO ' . self::TABLE_NAME . ' (' . self::PROPERTY_TABLE_COLUMNS . ') VALUES (' . self::PROPERTY_TABLE_COLUMNS2 . ') ON DUPLICATE KEY UPDATE uuid=:uuid2');
-
-
-        foreach ($properties as $property) {
-
-            // mysql search query
-            $searchQuery = 'SELECT uuid,updated_at FROM ' . self::TABLE_NAME . ' WHERE (uuid = :uuid and updated_at <> :updated_at)';
-
-            $searchResult = $this->db_connection->getConnection()
-                                                ->prepare($searchQuery);
-
-
-            //set your id to the query id
-            $searchResult->bindParam(':uuid', $property['uuid']);
-            $searchResult->bindParam(':updated_at', $property['updated_at']);
-            $isUpdate = $searchResult->execute();
-
-            if ($isUpdate) {
-
-                $stmt->bindParam(':uuid', $property['uuid']);
-                $stmt->bindParam(':uuid2', $property['uuid']);
-                $stmt->bindParam(':county', $property['county']);
-                $stmt->bindParam(':country', $property['country']);
-                $stmt->bindParam(':town', $property['town']);
-                $stmt->bindParam(':description', $property['description']);
-                $stmt->bindParam(':image_full', $property['image_full']);
-                $stmt->bindParam(':image_thumbnail', $property['image_thumbnail']);
-                $stmt->bindParam(':latitude', $property['latitude']);
-                $stmt->bindParam(':longitude', $property['longitude']);
-                $stmt->bindParam(':num_bedrooms', $property['num_bedrooms']);
-                $stmt->bindParam(':num_bathrooms', $property['num_bathrooms']);
-                $stmt->bindParam(':price', $property['price']);
-                $stmt->bindParam(':type', $property['type']);
-                $stmt->bindParam(':created_at', $property['created_at']);
-                $stmt->bindParam(':updated_at', $property['updated_at']);
-                $stmt->execute();
-            }
-        }
-
-
-        return $this;
-    }
-
+   /*
+       * I used Dependecy Injection. "$db_driver" is an object injection to the method.
+       */
+      public function saveDataToDatabase($db_driver): PropertiesData
+      {
+          $this->db_connection = $db_driver;
+  
+          $this->db_connection->createTableWithColumns(self::TABLE_NAME, self::PROPERTY_TABLE_SCHEMA);
+  
+  
+          $properties = $this->data;
+  
+  
+          // prepare sql and bind parameters
+          // This statement is checking the records which recorded to the database. If they are already in client's
+          // database, do not add once again.
+          $stmt = $this->db_connection->getConnection()
+                                      ->prepare('INSERT INTO ' . self::TABLE_NAME .
+                                          ' (' . self::PROPERTY_TABLE_COLUMNS . ') VALUES (' . self::PROPERTY_TABLE_COLUMNS2 .
+                                          ') ON DUPLICATE KEY UPDATE uuid=:uuid2');
+  
+  
+          // This foreach code block  updates the details in the database if any changes are made to the details
+          // of the property in the API
+          foreach ($properties as $property) {
+  
+              // mysql search query
+              $searchQuery = 'SELECT uuid,updated_at FROM ' . self::TABLE_NAME . ' WHERE (uuid = :uuid and updated_at <> :updated_at)';
+  
+              $searchResult = $this->db_connection->getConnection()
+                                                  ->prepare($searchQuery);
+  
+  
+              //set your id to the query id
+              $searchResult->bindParam(':uuid', $property['uuid']);
+              $searchResult->bindParam(':updated_at', $property['updated_at']);
+              $isUpdate = $searchResult->execute();
+  
+              if ($isUpdate) {
+  
+                  $stmt->bindParam(':uuid', $property['uuid']);
+                  $stmt->bindParam(':uuid2', $property['uuid']);
+                  $stmt->bindParam(':county', $property['county']);
+                  $stmt->bindParam(':country', $property['country']);
+                  $stmt->bindParam(':town', $property['town']);
+                  $stmt->bindParam(':description', $property['description']);
+                  $stmt->bindParam(':image_full', $property['image_full']);
+                  $stmt->bindParam(':image_thumbnail', $property['image_thumbnail']);
+                  $stmt->bindParam(':latitude', $property['latitude']);
+                  $stmt->bindParam(':longitude', $property['longitude']);
+                  $stmt->bindParam(':num_bedrooms', $property['num_bedrooms']);
+                  $stmt->bindParam(':num_bathrooms', $property['num_bathrooms']);
+                  $stmt->bindParam(':price', $property['price']);
+                  $stmt->bindParam(':type', $property['type']);
+                  $stmt->bindParam(':created_at', $property['created_at']);
+                  $stmt->bindParam(':updated_at', $property['updated_at']);
+                  $stmt->execute();
+              }
+          }
+  
+  
+          return $this;
+      }
 ```
 
 ## Installation:
