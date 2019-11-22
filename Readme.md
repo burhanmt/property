@@ -106,7 +106,7 @@ can creates object without use of the constructor. I can create external sources
 in a convenient way. In the future we can have more external sources, so this class is the one responsible to
 instantiate them without using constructor.
 
-Look at the code below how to create a class with "FactoryData":
+Look at the code below how to create a class(external source component) with "DataFactory" class:
 ```
       $properties = DataFactory::obtainData(PropertiesData::class)
                                  ->getJsonDataFromExternalSource()
