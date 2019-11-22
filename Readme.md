@@ -144,7 +144,7 @@ src/Database/MySqlCredentialBuilder.php
 
 ```
 
-If you look at the code that is above, It returns an object like: `return this;`, allowing the calls to be chained together in a single statement without requiring variables to store the intermediate results.
+If you look at the code that is above, It returns an object like: `return this;`, allowing the calls to be chained together in a single statement.
 Other methods also return the object in "MySqlCredentialBuilder.php" class.
 So When I use it, it looks like a chain, like that:
 
