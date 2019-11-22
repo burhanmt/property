@@ -102,9 +102,9 @@ $my_db = new MySql($credentials);
 
 **Example-2:**
 I preferred to use "Factory Design Pattern" to create external data source independently. A factory is an object that 
-can creates object without use of the constructor. I can create external source factory with this beautiful technique 
-in a convenient way. In the future we can have more external source, so this class is the one responsible to
-instantiate them without complexity.
+can creates object without use of the constructor. I can create external sources  with this beautiful technique 
+in a convenient way. In the future we can have more external sources, so this class is the one responsible to
+instantiate them without using constructor.
 
 Look at the code below how to create a class with "FactoryData":
 ```
