@@ -9,6 +9,11 @@ use ExternalData\PropertiesData;
 class Properties
 {
 
+    /**
+     * Populate the database with properties data via "PropertiesData::class"(it is external api connector) component.
+     *
+     * @return array
+     */
     public static function populateDatabaseFromApi(): array
     {
 
@@ -26,6 +31,11 @@ class Properties
     }
 
 
+    /**
+     *  Show all properties records from database
+     *
+     * @return array
+     */
     public static function showPropertiesFromDatabase(): array
     {
 

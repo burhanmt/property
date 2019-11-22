@@ -21,6 +21,12 @@ namespace ExternalData;
 
 class DataFactory
 {
+    /**
+     * Obtain the data from external source via given component name or class name
+     *
+     * @param $class_name
+     * @return ObtainDataInterface
+     */
     public static function obtainData($class_name): ObtainDataInterface
     {
 

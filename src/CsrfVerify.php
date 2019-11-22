@@ -33,6 +33,9 @@ class CsrfVerify
         }
     }
 
+    /**
+     * @param string $message
+     */
     public static function csrfFailedMessage($message = '')
     {
         echo json_encode(['success' => false, 'message' => $message]);
@@ -40,6 +43,9 @@ class CsrfVerify
         http_response_code(403); // 403: FORBIDDEN http code.
     }
 
+    /**
+     * @param string $message
+     */
     public static function csrfSuccessMessage($message = '')
     {
         echo json_encode(['success' => true, 'message' => $message]);

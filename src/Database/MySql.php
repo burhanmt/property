@@ -18,7 +18,13 @@ class MySql
      */
     private $conn;
 
-    // The db connection is established in the private constructor.
+
+
+    /**
+     * The db connection is established in the private constructor.
+     * MySql constructor.
+     * @param MySqlCredentialBuilder $builder
+     */
     public function __construct(MySqlCredentialBuilder $builder)
     {
         $options = [
@@ -41,6 +47,11 @@ class MySql
         return $this->conn;
     }
 
+    /**
+     * @param string $table_name
+     * @param string $columns_schema
+     * @return bool
+     */
     public function createTableWithColumns(string $table_name, string $columns_schema): bool
     {
         $is_successful = true;
@@ -62,6 +73,11 @@ class MySql
 
     }
 
+    /**
+     * @param string $table_name
+     * @param array $data
+     * @return bool
+     */
     public function addData(string $table_name, array $data): bool
     {
 
@@ -76,6 +92,11 @@ class MySql
         return $statement->execute($data);
     }
 
+    /**
+     * @param string $table_name
+     * @param string $id
+     * @return array
+     */
     public function getData(string $table_name, string $id): array
     {
 
@@ -88,6 +109,11 @@ class MySql
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
+    /**
+     * @param string $table_name
+     * @param string $id
+     * @return bool
+     */
     public function deleteData(string $table_name, string $id): bool
     {
 
@@ -101,6 +127,13 @@ class MySql
         return $result;
     }
 
+    /**
+     * @param string $table_name
+     * @param array $columns
+     * @param array $values
+     * @param string $id
+     * @return bool
+     */
     public function updateData(string $table_name, array $columns, array $values, string $id): bool
     {
         // initialize an array with values:

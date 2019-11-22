@@ -40,6 +40,10 @@ class MySqlCredentialBuilder
     private $username;
     private $password;
 
+    /**
+     *
+     * MySqlCredentialBuilder constructor.
+     */
     public function __construct()
     {
 

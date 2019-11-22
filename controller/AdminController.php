@@ -9,6 +9,9 @@ class AdminController
     private $my_db;
 
 
+    /**
+     * AdminController constructor.
+     */
     public function __construct()
     {
         $this->my_db = new  MySql (new MySqlCredentialBuilder());
@@ -48,18 +51,37 @@ class AdminController
 
     }
 
+    /**
+     * Delete a record from database by given id number
+     *
+     * @param $id
+     * @return bool
+     */
     public function delete($id): bool
     {
 
         return $this->my_db->deleteData('properties', $id);
     }
 
+    /**
+     * Show a record from database by given id number
+     *
+     * @param string $id
+     * @return array
+     */
     public function getData(string $id): array
     {
 
         return $this->my_db->getData('properties', $id);
     }
 
+    /**
+     * Update a record from database by given id number
+     *
+     * @param array $values
+     * @param string $id
+     * @return bool
+     */
     public function updateData(array $values, string $id): bool
     {
         return $this->my_db->updateData('properties', ['county','country','num_bedrooms','type'], $values, $id);

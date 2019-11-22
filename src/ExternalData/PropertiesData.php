@@ -41,15 +41,34 @@ final class PropertiesData implements ObtainDataInterface
     const TABLE_NAME = 'properties';
 
 
+    /**
+     * Guzzle instance
+     */
     private $http_client;
+
+    /**
+     * Obtained data from external source
+     */
     private $data = [];
+
+    /**
+     * Database connection instance
+     */
     private $db_connection;
 
+
+    /**
+     * PropertiesData constructor.
+     */
     public function __construct()
     {
         $this->http_client = new Client();
     }
 
+    /**
+     * @return PropertiesData
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
     public function getJsonDataFromExternalSource(): PropertiesData
     {
 
@@ -68,8 +87,12 @@ final class PropertiesData implements ObtainDataInterface
         return $this;
     }
 
-    /*
-     * I used Dependecy Injection. "$db_driver" is an object injection to the method.
+
+    /**
+     *  I used Dependecy Injection. "$db_driver" is an object injection to the method.
+     *
+     * @param $db_driver
+     * @return PropertiesData
      */
     public function saveDataToDatabase($db_driver): PropertiesData
     {
@@ -132,6 +155,9 @@ final class PropertiesData implements ObtainDataInterface
         return $this;
     }
 
+    /**
+     * @return array
+     */
     public function showData(): array
     {
 
