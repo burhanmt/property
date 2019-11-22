@@ -230,7 +230,7 @@ It allows me to work Model, View, Controller layer separately, so there is less
 code complexity and confusion.
 
 ## Security
-I added simple but robust CSRF protection for the AJAX requests. I admit, it was difficult to develop a new system without using framework. Because Everything, you should make from scratch and your
+I added simple but robust CSRF protection for the AJAX requests. I admit, it was difficult to develop a new system without using framework. Because  you should make everything from scratch and your
 project will be more vulnerable. 
 
 CSRF is Cross Site Request Forgery Attack. That attack is performed by making fake forms or requests that behaves exactly same as in original website but it is not coming the target's
