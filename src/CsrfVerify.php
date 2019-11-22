@@ -32,4 +32,18 @@ class CsrfVerify
             return false;
         }
     }
+
+    public static function csrfFailedMessage($message = '')
+    {
+        echo json_encode(['success' => false, 'message' => $message]);
+        die('Invalid CSRF token. Unauthorised access!');
+        http_response_code(403); // 403: FORBIDDEN http code.
+    }
+
+    public static function csrfSuccessMessage($message = '')
+    {
+        echo json_encode(['success' => true, 'message' => $message]);
+        http_response_code(200);
+    }
+
 }

@@ -10,19 +10,6 @@ if (isset($_GET['uri'])) {
     $default_uri = $_GET['uri'];
 }
 
-function csrfFailedMessage($message = '')
-{
-    echo json_encode(['success' => false, 'message' => $message]);
-    die('Invalid CSRF token. Unauthorised access!');
-    http_response_code(403); // 403: FORBIDDEN http code.
-}
-
-function csrfSuccessMessage($message = '')
-{
-    echo json_encode(['success' => true, 'message' => $message]);
-    http_response_code(200);
-}
-
 
 switch ($default_uri) {
 
@@ -46,10 +33,10 @@ switch ($default_uri) {
         if (CsrfVerify::csrfCheck($_SESSION['csrf_token'], $_POST['data']['token_'], 'AdminPanel.php')) {
             $adminController = new AdminController();
             if ($adminController->storeJsonData($_POST['data'])) {
-                csrfSuccessMessage();
+                CsrfVerify::csrfSuccessMessage();
             }
         } else {
-            csrfFailedMessage();
+            CsrfVerify::csrfFailedMessage();
         }
         break;
 
@@ -84,10 +71,10 @@ switch ($default_uri) {
             $adminController = new AdminController();
 
             if ($adminController->delete($_POST['id'])) {
-                csrfSuccessMessage();
+                CsrfVerify::csrfSuccessMessage();
             }
         } else {
-            csrfFailedMessage();
+            CsrfVerify::csrfFailedMessage();
         }
         break;
 
@@ -111,10 +98,10 @@ switch ($default_uri) {
 
             ], $_POST['id'])) {
 
-                csrfSuccessMessage();
+                CsrfVerify::csrfSuccessMessage();
             }
         } else {
-            csrfFailedMessage();
+            CsrfVerify::csrfFailedMessage();
         }
         break;
 
