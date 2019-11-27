@@ -65,8 +65,6 @@ switch ($default_uri) {
 
 
     case 'delete-property': //Admin Controller
-        require_once('controller/AdminController.php');
-
 
         if (CsrfVerify::csrfCheck($_SESSION['csrf_token'], $_POST['token_'], 'AdminPanel.php')) {
             $adminController = new AdminController();

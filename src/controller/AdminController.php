@@ -24,8 +24,7 @@ class AdminController
      *
      * @param $data
      * @return bool
-     * @throws Exception
-     *
+     * @throws \Exception
      */
     public function storeJsonData($data): bool
     {
