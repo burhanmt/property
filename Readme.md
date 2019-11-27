@@ -105,7 +105,7 @@ Folder name: Database, file name: MySql.php, so MySql class:
 
 src/Database/MySql.php
 ```
-namespace Database;
+namespace App\Database;
 
 use PDO;
 use PDOException;
@@ -118,12 +118,10 @@ class MySql
 My `composer.json` PSR-4 settings:
 
 ```
-"autoload": {
-    "classmap": [
-      "src/",
-      "models/",
-      "controller/"
-    ]
+  "autoload": {
+    "psr-4": {
+      "App\\": "src/"
+    }
   },
 ```
 
