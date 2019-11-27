@@ -1,4 +1,7 @@
 <?php
+
+
+
 require_once('partials/header.php');
 ?>
 
@@ -224,7 +227,7 @@ require_once('partials/header.php');
                                 <tbody>
 
                                 <?php
-                                $properties = Properties::showPropertiesFromDatabase();
+                                $properties = App\models\Properties::showPropertiesFromDatabase();
 
 
                                 $i      = 0;

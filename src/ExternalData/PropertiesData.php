@@ -9,7 +9,7 @@
  *                                 ->showData();
  */
 
-namespace ExternalData;
+namespace App\ExternalData;
 
 use GuzzleHttp\Client;
 

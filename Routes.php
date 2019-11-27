@@ -1,5 +1,9 @@
 <?php
-session_start();
+
+
+use App\controller\AdminController;
+use App\CsrfVerify;
+
 /*
  *       Application's all routes should be here.
  *
@@ -14,21 +18,19 @@ if (isset($_GET['uri'])) {
 switch ($default_uri) {
 
     case 'admin-panel':
-        require_once('models/Properties.php');
         require_once('view/AdminPanel.php');
         break;
 
     /* --------------------------- */
 
     case 'propery-list-from-api':
-        require_once('models/Properties.php');
+
         require_once('view/PropertyListPageFromAPI.php');
         break;
 
     /* --------------------------- */
 
     case 'add-property':   //Admin Controller
-        require_once('controller/AdminController.php');
 
         if (CsrfVerify::csrfCheck($_SESSION['csrf_token'], $_POST['data']['token_'], 'AdminPanel.php')) {
             $adminController = new AdminController();
@@ -44,7 +46,6 @@ switch ($default_uri) {
 
 
     case 'get-property':   //Admin Controller
-        require_once('controller/AdminController.php');
 
         $adminController = new AdminController();
         $data            = $adminController->getData($_GET['id']);
@@ -85,7 +86,6 @@ switch ($default_uri) {
 
 
     case 'update-property': //Admin Controller
-        require_once('controller/AdminController.php');
 
         if (CsrfVerify::csrfCheck($_SESSION['csrf_token'], $_POST['token_'], 'AdminPanel.php')) {
             $adminController = new AdminController();

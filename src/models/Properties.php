@@ -1,9 +1,10 @@
 <?php
+namespace App\models;
 
-use Database\MySql;
-use Database\MySqlCredentialBuilder;
-use ExternalData\DataFactory;
-use ExternalData\PropertiesData;
+use App\Database\MySql;
+use App\Database\MySqlCredentialBuilder;
+use App\ExternalData\DataFactory;
+use App\ExternalData\PropertiesData;
 
 
 class Properties

@@ -23,10 +23,10 @@
  *                       $my_db = new  MySql (new MySqlCredentialBuilder());
  */
 
-namespace Database;
+namespace App\Database;
 
 
-use Settings;
+use App\Settings;
 
 class MySqlCredentialBuilder
 {

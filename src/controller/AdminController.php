@@ -1,8 +1,9 @@
 <?php
 
+namespace App\controller;
 
-use Database\MySql;
-use Database\MySqlCredentialBuilder;
+use App\Database\MySql;
+use App\Database\MySqlCredentialBuilder;
 
 class AdminController
 {

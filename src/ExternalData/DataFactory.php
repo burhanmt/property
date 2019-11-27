@@ -17,7 +17,7 @@
  *                                 ->showData();
  */
 
-namespace ExternalData;
+namespace App\ExternalData;
 
 class DataFactory
 {

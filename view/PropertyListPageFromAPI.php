@@ -1,4 +1,5 @@
 <?php
+
 require_once('partials/header.php');
 ?>
 
@@ -42,7 +43,7 @@ require_once('partials/header.php');
                     <tbody>
 
                     <?php
-                    $properties = Properties::populateDatabaseFromApi();
+                    $properties = App\models\Properties::populateDatabaseFromApi();
 
 
                     $i = 0;

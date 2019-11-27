@@ -24,6 +24,10 @@ class ComposerStaticInit90c49eac456ae4d443176ccb1574bffb
             'GuzzleHttp\\Promise\\' => 19,
             'GuzzleHttp\\' => 11,
         ),
+        'A' => 
+        array (
+            'App\\' => 4,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
@@ -43,18 +47,10 @@ class ComposerStaticInit90c49eac456ae4d443176ccb1574bffb
         array (
             0 => __DIR__ . '/..' . '/guzzlehttp/guzzle/src',
         ),
-    );
-
-    public static $classMap = array (
-        'AdminController' => __DIR__ . '/../..' . '/controller/AdminController.php',
-        'CsrfVerify' => __DIR__ . '/../..' . '/src/CsrfVerify.php',
-        'Database\\MySql' => __DIR__ . '/../..' . '/src/Database/MySql.php',
-        'Database\\MySqlCredentialBuilder' => __DIR__ . '/../..' . '/src/Database/MySqlCredentialBuilder.php',
-        'ExternalData\\DataFactory' => __DIR__ . '/../..' . '/src/ExternalData/DataFactory.php',
-        'ExternalData\\ObtainDataInterface' => __DIR__ . '/../..' . '/src/ExternalData/ObtainDataInterface.php',
-        'ExternalData\\PropertiesData' => __DIR__ . '/../..' . '/src/ExternalData/PropertiesData.php',
-        'Properties' => __DIR__ . '/../..' . '/models/Properties.php',
-        'Settings' => __DIR__ . '/../..' . '/src/Settings.php',
+        'App\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src',
+        ),
     );
 
     public static function getInitializer(ClassLoader $loader)
@@ -62,7 +58,6 @@ class ComposerStaticInit90c49eac456ae4d443176ccb1574bffb
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInit90c49eac456ae4d443176ccb1574bffb::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit90c49eac456ae4d443176ccb1574bffb::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit90c49eac456ae4d443176ccb1574bffb::$classMap;
 
         }, null, ClassLoader::class);
     }
