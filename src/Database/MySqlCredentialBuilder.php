@@ -33,7 +33,7 @@ class MySqlCredentialBuilder
 
     /**
      * Database credentials
-     *
+     * When I instantiate the class, No one should access these properties.
      */
     private $host;
     private $db_name;
