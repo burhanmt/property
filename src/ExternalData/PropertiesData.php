@@ -11,6 +11,7 @@
 
 namespace App\ExternalData;
 
+use App\Database\MySql;
 use GuzzleHttp\Client;
 
 final class PropertiesData implements ObtainDataInterface
